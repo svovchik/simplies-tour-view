@@ -1,6 +1,7 @@
 node_modules/
 archives/
 
-tours/coast/
-tours/horn/
-tours/horn_web/
+!tours/
+tours/*/
+
+api/db/projects.db.json
