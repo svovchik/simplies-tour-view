@@ -10,30 +10,8 @@
   <title>Kaap Tours</title>
 </head>
 <body>
-  <!-- <div class="container mt-5">
-    <div class="d-flex justify-content-evenly">
-      <h2>Select tours:</h2>
-    </div>
-    <div class="d-flex justify-content-evenly mt-5">
-      <div class="card shadow-sm" style="width: 18rem;">
-        <img src="coast/jpg/base/1024/Layama0023_px.jpg" class="card-img-top" alt="coast preview">
-        <div class="card-body">
-          <h5 class="card-title">Coast</h5>
-          <p class="card-text"></p>
-          <a href="coast/index.html" class="btn btn-primary">Run Tour</a>
-        </div>
-      </div>
-      <div class="card shadow-sm" style="width: 18rem;">
-        <img src="horn/jpg/base/1024/Layama0170_pz.jpg" class="card-img-top" alt="horn preview">
-        <div class="card-body">
-          <h5 class="card-title">Horn</h5>
-          <p class="card-text"></p>
-          <a href="horn/index.html" class="btn btn-primary">Run Tour</a>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div id="app">
+    <nav-bar></nav-bar>
     <div v-if="tours" class="container mt-5">
       <div class="d-flex justify-content-evenly">
         <h2>Select tours:</h2>
@@ -55,7 +33,7 @@
       </div>
   </div>
   <div v-else class="container mt-5">
-    <p>There is no tours yet...</p>
+    <p>There is no tours yet. Login to upload tours.</p>
   </div>
   </div>
 

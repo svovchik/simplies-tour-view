@@ -1,3 +1,22 @@
+Vue.component('nav-bar', {
+  template: `
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">Kaap Tours</a>
+      <div class="d-flex">
+        <button v-if="!user" class="btn btn-outline-light btn-sm" type="button">Login</button>
+        <button v-else class="btn btn-outline-light btn-sm" type="button">Add Project</button>
+      </div>
+    </div>
+  </nav>
+  `,
+  data() {
+    return {
+      user: null
+    }
+  }
+});
+
 const app = new Vue({
   el: '#app',
   data: {
