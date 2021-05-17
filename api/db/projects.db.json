@@ -1,10 +1,17 @@
 [
   {
     "name": "coast",
-    "preview": "coast/jpg/base/1024/Layama0023_px.jpg"
+    "preview": "coast/jpg/base/1024/Layama0023_px.jpg",
+    "description": "1 Coast - 3 floor, living room apartment № 10"
   },
   {
     "name": "horn",
-    "preview": "horn/jpg/base/1024/Layama0170_pz.jpg"
+    "preview": "horn/jpg/base/1024/Layama0170_pz.jpg",
+    "description": "House 2 Horn - 5 floor, apartment № 31"
+  },
+  {
+    "name": "test",
+    "preview": "test/jpg/base/1024/Layama0065_px.jpg",
+    "description": "Building: Coast,\nFloor: 3\nAppartments: 10"
   }
 ]

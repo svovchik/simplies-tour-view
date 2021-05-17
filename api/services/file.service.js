@@ -75,7 +75,10 @@ async function unzipFile(source) {
   const destination = path.join(path.dirname(source), tmpName);
 
   zip.extractAllTo(destination, true);
-  await fs.rm(source);
+  await fs.rm(source, {
+    force: true,
+    recursive: true
+  });
 
   return destination;
 }
@@ -85,4 +88,11 @@ async function saveJson(filepath, object) {
   await fs.writeFile(filepath,jsonString,'utf-8');
 }
 
-module.exports = { unzipFile, moveFolder, saveJson };
+async function removePorject(source) {
+  await fs.rm(source, {
+    force: true,
+    recursive: true
+  });
+}
+
+module.exports = { unzipFile, moveFolder, saveJson, removePorject };

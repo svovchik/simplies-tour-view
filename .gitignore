@@ -1,7 +1,6 @@
 node_modules/
 archives/
 
-!tours/
 tours/*/
 
 api/db/projects.db.json

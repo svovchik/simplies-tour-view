@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const multer = require('multer');
 const tourController = require('../controllers/tour.controller');
+const userController = require('../controllers/user.controller');
 const { archivesPath, toursPath } = require('../../server.config');
 
 const router = Router();
@@ -16,7 +17,7 @@ const storageConfig = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype == 'application/zip') {
+  if (file.mimetype === 'application/zip' || file.mimetype === 'application/x-zip-compressed') {
     cb(null, true);
   } else {
     cb(null, false);
@@ -30,8 +31,14 @@ router
   .get(tourController.fetchProjects);
 
 router
-  .route('/upload/:id')
+  .route('/:id/upload')
   .post(upload.single('filedata'), tourController.uploadTour);
 
+router
+  .route('/:id')
+  .all(userController.authorizateUser)
+  .get(tourController.fetchOne)
+  .post(tourController.saveOne)
+  .delete(tourController.removeOne);
 
 module.exports = router;

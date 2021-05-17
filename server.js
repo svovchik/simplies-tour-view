@@ -1,5 +1,6 @@
 const express = require('express');
-const apiRouter = require('./api/routes/tour.route');
+const apiTourRouter = require('./api/routes/tour.route');
+const apiUserRouter = require('./api/routes/user.route');
 
 const PORT = 8080;
 const app = express();
@@ -7,7 +8,12 @@ const app = express();
 app.use(express.json());
 
 app.use('/tours', express.static('tours'));
-app.use('/api/tours', apiRouter);
+app.use('/api/tours', apiTourRouter);
+app.use('/api/users', apiUserRouter);
+
+app.get('/', (req, res) => {
+  res.send('dev.VERO.digital');
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port:${PORT}...`);

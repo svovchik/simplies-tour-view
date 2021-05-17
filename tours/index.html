@@ -11,23 +11,64 @@
 </head>
 <body>
   <div id="app">
-    <nav-bar></nav-bar>
+    <login-modal v-if="modal === 'login'" @login="login" @close="closeModal"></login-modal>
+    <edit-modal
+      v-else-if="modal === 'edit'"
+      :tour="edit"
+      :user="user"
+      @close="closeModal"
+      @error='logout'
+    ></edit-modal>
+    <nav-bar :authorized="authorized" @login="openLoginWindow" @logout="logout"></nav-bar>
+    
     <div v-if="tours" class="container mt-5">
       <div class="d-flex justify-content-evenly">
         <h2>Select tours:</h2>
       </div>
-      <div class="d-flex justify-content-evenly mt-5">
+      <div class="d-flex flex-wrap justify-content-around">
         <div
-          class="card shadow-sm"
+          class="card shadow-sm mb-4"
           style="width: 18rem;"
           v-for="(tour, idx) in tours"
           :key="idx"
         >
           <img :src="tour.preview" class="card-img-top" :alt="tour.name + ' preview'">
-          <div class="card-body">
-            <h5 class="card-title">{{ capitalise(tour.name) }}</h5>
-            <p class="card-text"></p>
-            <a :href="tour.name + '/index.html'" class="btn btn-primary">Run Tour</a>
+          <div class="card-body d-flex align-content-between flex-wrap">
+            <h5 class="card-title text-center w-100">{{ capitalise(tour.name) }}</h5>
+            <p class="card-text text-center">{{ tour.description }}</p>
+
+            <div class="btn-group w-100">
+              <a :href="tour.name + '/index.html'" class="btn btn-primary" aria-current="page">
+                Take a Tour
+              </a>
+              <button
+                v-if="authorized"
+                type="button"
+                class="btn btn-primary"
+                @click.prevent="openEditWindow(tour.name)"
+              >
+                Edit
+              </button>
+              <button
+                v-if="authorized"
+                type="button"
+                class="btn btn-danger"
+                @click.prevent="removeTour(tour.name)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div v-if="authorized" class="card shadow-sm mb-4" style="width: 18rem;">
+          <div class="card-body d-flex align-items-center">
+            <button
+              type="button"
+              class="btn btn-success w-100"
+              @click.prevent="openEditWindow()"
+            >
+              Create New Tour
+            </button>
           </div>
         </div>
       </div>
