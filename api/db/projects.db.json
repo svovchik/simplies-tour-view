@@ -13,5 +13,12 @@
     "name": "test",
     "preview": "test/jpg/base/1024/Layama0065_px.jpg",
     "description": "Building: Coast,\nFloor: 3\nAppartments: 10"
+  },
+  {
+    "name": "daybase",
+    "preview": "daybase/jpg/base/1024/Layama0128_pz.jpg"
+  },
+  {
+    "name": "labs"
   }
 ]

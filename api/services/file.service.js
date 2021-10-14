@@ -1,6 +1,23 @@
 const fs = require('fs/promises');
+const { constants } = require('fs');
 const path = require('path');
 const AdmZip = require('adm-zip');
+const { archivesPath, toursPath } = require('../../server.config');
+
+async function createWorkingFolders() {
+  try {
+    await fs.access(archivesPath, constants.R_OK | constants.W_OK);
+  } catch (error) {
+    fs.mkdir(archivesPath, { recursive: true });
+  }
+  try {
+    await fs.access(toursPath, constants.R_OK | constants.W_OK);
+  } catch (error) {
+    fs.mkdir(toursPath, { recursive: true });
+  }
+}
+
+createWorkingFolders();
 
 async function moveFolder(source, destination) {
   const rootPath = await findRoot(source);

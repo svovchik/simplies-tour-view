@@ -2,7 +2,7 @@ Vue.component('nav-bar', {
   template: `
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand">Kaap Tours</a>
+      <a class="navbar-brand">Vero Digital Tours</a>
       <div class="d-flex">
         <button
           v-if="!authorized"
